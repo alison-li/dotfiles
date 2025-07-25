@@ -26,3 +26,5 @@ copy-files() {
 
 setup-omz
 copy-files
+
+sudo chsh "$(id -un)" --shell "/usr/bin/zsh"
