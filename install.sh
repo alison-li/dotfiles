@@ -22,6 +22,8 @@ copy-files() {
     cat $(pwd)/.vimrc > $HOME/.vimrc
     cat $(pwd)/.gitconfig > $HOME/.gitconfig
     cp $(pwd)/zsh_custom/* ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
+    mkdir -p $HOME/.copilot
+    ln -sf $(pwd)/mcp-config.json $HOME/.copilot/mcp-config.json # symlink so edits via /mcp add are reflected in dotfiles
 }
 
 setup-omz

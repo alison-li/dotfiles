@@ -1,0 +1,60 @@
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "tools": [],
+      "type": "local",
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ]
+    },
+    "azure-mcp": {
+      "tools": [
+        "*"
+      ],
+      "type": "local",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@azure/mcp@latest",
+        "server",
+        "start"
+      ],
+      "env": {}
+    },
+    "splunk": {
+      "tools": [
+        "*"
+      ],
+      "type": "local",
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "SPLUNK_HOST",
+        "-e",
+        "SPLUNK_PORT",
+        "-e",
+        "SPLUNK_BEARER_TOKEN",
+        "-e",
+        "SPLUNK_SCHEME",
+        "-e",
+        "VERIFY_SSL",
+        "-e",
+        "FASTMCP_LOG_LEVEL",
+        "ghcr.io/github/splunk-mcp-server:latest"
+      ],
+      "env": {
+        "SPLUNK_HOST": "splunkazure-api-azure-eastus.octoca.ts.net",
+        "SPLUNK_PORT": "443",
+        "SPLUNK_BEARER_TOKEN": "${SPLUNK_TOKEN}",
+        "SPLUNK_SCHEME": "https",
+        "VERIFY_SSL": "true",
+        "FASTMCP_LOG_LEVEL": "DEBUG"
+      }
+    }
+  }
+}
